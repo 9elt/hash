@@ -1,0 +1,17 @@
+{
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "dist",
+        "tests"
+    ],
+    "compilerOptions": {
+        "target": "ES2015",
+        "module": "CommonJS",
+        "outDir": "dist/cjs",
+        "allowJs": true,
+        "declaration": true,
+        "skipLibCheck": true
+    }
+}

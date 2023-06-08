@@ -1,0 +1,17 @@
+{
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "dist",
+        "tests"
+    ],
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "outDir": "dist/esm",
+        "allowJs": true,
+        "declaration": true,
+        "skipLibCheck": true
+    }
+}
