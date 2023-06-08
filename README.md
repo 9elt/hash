@@ -4,7 +4,7 @@ A fast, performance focused, 32-bit non cryptographic hash
 
 ### example
 ```javascript
-import hash from "fast-hash";
+import hash from "f-hash";
 
 hash({ foo: "bar" }); //4274701217
 hash("foo"); //193420387
@@ -15,7 +15,7 @@ There is a faster *"unsafe"* version,
 that doesn't check for self references in objects.
 
 ```javascript
-import { hashUnsafe } from "fast-hash";
+import { hashUnsafe } from "f-hash";
 
 hashUnsafe({ foo: "bar" }); //4274701217
 // ! this will cause an infinite recursion

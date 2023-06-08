@@ -1,5 +1,5 @@
 {
-  "name": "fast-hash",
+  "name": "f-hash",
   "type": "commonjs",
   "version": "1.0.0",
   "description": "A fast, performance focused, 32-bit non cryptographic hash",
