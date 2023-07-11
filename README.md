@@ -1,10 +1,10 @@
-# Fast Hash
+# Hash
 
 A fast, performance focused, 32-bit non cryptographic hash
 
 ### example
 ```javascript
-import hash from "f-hash";
+import hash from "@9elt/hash";
 
 hash({ foo: "bar" }); //4274701217
 hash("foo"); //193420387
@@ -15,7 +15,7 @@ There is a faster *"unsafe"* version,
 that doesn't check for self references in objects.
 
 ```javascript
-import { hashUnsafe } from "f-hash";
+import { hashUnsafe } from "@9elt/hash";
 
 hashUnsafe({ foo: "bar" }); //4274701217
 // ! this will cause an infinite recursion

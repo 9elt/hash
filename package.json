@@ -1,5 +1,5 @@
 {
-  "name": "f-hash",
+  "name": "@9elt/hash",
   "type": "commonjs",
   "version": "1.0.0",
   "description": "A fast, performance focused, 32-bit non cryptographic hash",
@@ -27,8 +27,8 @@
     "djb2"
   ],
   "readme": "./README.md",
-  "homepage": "https://github.com/9elt/fast-hash#readme",
-  "repository": "github:9elt/fast-hash",
+  "homepage": "https://github.com/9elt/hash#readme",
+  "repository": "github:9elt/hash",
   "devDependencies": {
     "jest": "^29.5.0",
     "jest-cli": "^29.5.0"
