@@ -1,0 +1,14 @@
+Hash
+
+a fast, performance focused, 32-bit non cryptographic hash
+
+
+- `""`, `[]`, `{}`, `undefined` hash to 5381.
+
+- numbers hash the same as their string representation.
+
+- object property order is preserved, `{ a: 1, b: 2 }` and `{ b: 2, a: 1 }` may hash to different values.
+
+- some classes (e.g. ArrayBuffer) are not supported and will hash to 5381, for something more versatile check out hash-it (https://github.com/planttheidea/hash-it).
+
+- function hashes may not be consistent across different environments.
