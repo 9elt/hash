@@ -59,6 +59,8 @@ function hashObject(target, refs, push) {
 
     refs.push(target);
 
-    for (const key in target)
+    for (const key in target) {
+        push(key);
         push(route(target[key], push, refs));
+    }
 }

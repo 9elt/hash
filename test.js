@@ -34,17 +34,17 @@ assert('foo', 2087905456);
 assert(true, 165730225);
 
 
-assert({ foo: 'bar' }, 194661000);
+assert({ foo: 'bar' }, 3625475054);
 
 
-assert(["foo"], 181403359);
+assert(["foo"], 3848107343);
 
 
 const self_ref = {};
 
 self_ref.self = self_ref;
 
-assert(self_ref, 193337187);
+assert(self_ref, 1910232863);
 
 
 
