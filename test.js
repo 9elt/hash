@@ -40,6 +40,9 @@ assert({ foo: 'bar' }, 3625475054);
 assert(["foo"], 3848107343);
 
 
+assert(new Date('2024-01-01'), 2814381918);
+
+
 const self_ref = {};
 
 self_ref.self = self_ref;

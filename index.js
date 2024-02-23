@@ -59,6 +59,9 @@ function hashObject(target, refs, push) {
 
     refs.push(target);
 
+    if (target instanceof Date)
+        return push(target.toISOString());
+
     for (const key in target) {
         push(key);
         push(route(target[key], push, refs));
