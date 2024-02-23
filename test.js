@@ -4,47 +4,47 @@ import hash from '.';
 let failed = 0;
 
 
-assert('', 5381);
+assert('', 177622);
 
 
-assert([], 5381);
+assert([], 177610);
 
 
-assert({}, 5381);
+assert({}, 177610);
 
 
 assert(undefined, 5381);
 
 
-assert(0, 177557);
+assert(0, 5859419);
 
 
-assert('0', 177557);
+assert('0', 5859398);
 
 
-assert(null, 2087659838);
+assert(null, 173297809);
 
 
-assert(99, 5859621);
+assert(99, 193367467);
 
 
-assert('foo', 193420387);
+assert('foo', 2087905456);
 
 
-assert(true, 2087430515);
+assert(true, 165730225);
 
 
-assert({ foo: 'bar' }, 2088307207);
+assert({ foo: 'bar' }, 194661000);
 
 
-assert(["foo"], 2087905456);
+assert(["foo"], 181403359);
 
 
 const self_ref = {};
 
 self_ref.self = self_ref;
 
-assert(self_ref, 5858700);
+assert(self_ref, 193337187);
 
 
 
@@ -59,7 +59,7 @@ export function assert(target, expected) {
     if (result !== expected)
         ++failed && console.log(
             '\nfailed',
-            '\n  target -> ', target,
+            '\n  target -> ', typeof target === 'object' ? target : target + "",
             '\n  expected -> ', expected,
             '\n  got -> ', result,
             '\n'

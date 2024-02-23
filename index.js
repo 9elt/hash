@@ -17,7 +17,7 @@ class Hasher extends Uint32Array {
 export default function hash(value) {
     const hasher = new Hasher();
 
-    route(value, hasher.push);
+    hasher.push(route(value, hasher.push));
 
     return hasher[0];
 }
