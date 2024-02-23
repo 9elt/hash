@@ -57,10 +57,10 @@ function hashObject(target, refs, push) {
     if (refs.includes(target))
         return push('&');
 
-    refs.push(target);
-
     if (target instanceof Date)
         return push(target.toISOString());
+
+    refs.push(target);
 
     for (const key in target) {
         push(key);
