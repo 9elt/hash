@@ -1,6 +1,6 @@
 {
     "name": "@9elt/hash",
-    "version": "2.1.4",
+    "version": "2.1.5",
     "description": "A fast, performance focused, 32-bit non cryptographic hash",
     "main": "./dist/cjs/index.js",
     "types": "./dist/cjs/index.d.ts",

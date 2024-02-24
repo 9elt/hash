@@ -29,7 +29,7 @@ function route(value, push, refs = []) {
             return 's';
         case 'symbol':
             push(value.description);
-            return 'sy';
+            return 'm';
         case 'object':
             hashObject(value, refs, push);
             return 'o';
@@ -43,7 +43,7 @@ function route(value, push, refs = []) {
             return 'b';
         case 'bigint':
             push(value.toString());
-            return 'bn';
+            return 'g';
         case 'function':
             push(value.toString());
             return 'f';
