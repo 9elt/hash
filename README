@@ -2,8 +2,4 @@ Hash
 
 A fast, performance focused, 32-bit non cryptographic hash
 
-- object property order is preserved, `{ a: 1, b: 2 }` and `{ b: 2, a: 1 }` may hash to different values.
-
-- some classes (e.g. ArrayBuffer) are not supported and will all hash to the same value, for something more versatile check out hash-it (https://github.com/planttheidea/hash-it).
-
-- function hashes may not be consistent across different environments.
+There are some limitations, frist of all, some classes (e.g. ArrayBuffer) are not supported and will all hash to the same value, for something more versatile check out hash-it (https://github.com/planttheidea/hash-it). Also, hashes may not be consistent across different environments, especially function ones. Notably, object property order is preserved, `{ a: 1, b: 2 }` and `{ b: 2, a: 1 }` may hash to different values.
