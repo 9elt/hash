@@ -5,8 +5,9 @@ class Hasher extends Uint32Array {
     }
     push = (str) => {
         let i = str.length;
-        while (i--)
+        while (i--) {
             this[0] = (this[0] * 33) ^ (str.charCodeAt(i) & 0xffff);
+        }
     }
 }
 
@@ -22,7 +23,7 @@ export default function hash(value) {
     return hasher[0];
 }
 
-function route(value, push, refs = []) {
+function route(value, push, refs) {
     switch (typeof value) {
         case 'string':
             push(value);
@@ -31,7 +32,7 @@ function route(value, push, refs = []) {
             push(value.description);
             return 'm';
         case 'object':
-            hashObject(value, refs, push);
+            hashObject(value, push, refs || []);
             return 'o';
         case 'undefined':
             return '';
@@ -50,7 +51,7 @@ function route(value, push, refs = []) {
     }
 }
 
-function hashObject(target, refs, push) {
+function hashObject(target, push, refs) {
     if (target === null)
         return push('null');
 
