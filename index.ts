@@ -1,50 +1,57 @@
-export function hash(value: unknown): number {
-    return _unk(value, 5381) >>> 0;
-}
-
-function _unk(value: unknown, h: number, refs?: WeakSet<object>): number {
+export function unknown(
+    value: unknown,
+    hash: number = 5381,
+    refs?: WeakSet<object>,
+): number {
     switch (typeof value) {
         case "string":
-            return _str("s", _str(value, h));
+            return string("s", string(value, hash));
         case "symbol":
-            return _str("m", _str(value.description || "", h));
+            return string("m", string(value.description || "", hash));
         case "object":
-            return _str("o", _obj(value, h, refs || new WeakSet));
+            return string("o", object(value, hash, refs || new WeakSet));
         case "undefined":
-            return h;
+            return hash;
         case "number":
-            return _str("n", _str(value.toString(), h));
+            return string("n", string(value.toString(), hash));
         case "boolean":
-            return _str("b", _str(value.toString(), h));
+            return string("b", string(value.toString(), hash));
         case "bigint":
-            return _str("i", _str(value.toString(), h));
+            return string("i", string(value.toString(), hash));
         case "function":
-            return _str("f", _str(value.toString(), h));
+            return string("f", string(value.toString(), hash));
     }
 }
 
-function _obj(value: object | null, h: number, refs: WeakSet<object>): number {
+export function object(
+    value: object | null,
+    hash: number = 5381,
+    refs: WeakSet<object> = new WeakSet,
+): number {
     if (value === null) {
-        return _str("n", h);
+        return string("n", hash);
     }
     if (value instanceof Date) {
-        return _str(value.getTime().toString(), h);
+        return string(value.getTime().toString(), hash);
     }
     if (refs.has(value)) {
-        return _str("&", h);
+        return string("&", hash);
     }
     refs.add(value);
     for (const key in value) {
-        h = _str(key, h);
-        h = _unk(value[key], h, refs)
+        hash = string(key, hash);
+        hash = unknown(value[key as keyof object], hash, refs)
     }
-    return h;
+    return hash;
 }
 
-function _str(str: string, h: number): number {
-    let i = str.length;
+export function string(
+    value: string,
+    hash: number = 5381,
+): number {
+    let i = value.length;
     while (i--) {
-        h = (h * 33) ^ (str.charCodeAt(i) & 0xffff);
+        hash = (hash * 33) ^ (value.charCodeAt(i) & 0xffff);
     }
-    return h;
+    return hash;
 }
