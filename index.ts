@@ -6,12 +6,12 @@ export function unknown(
     switch (typeof value) {
         case "string":
             return string("s", string(value, hash));
-        case "symbol":
-            return string("m", string(value.description || "", hash));
         case "object":
-            return string("o", object(value, hash, refs || new WeakSet));
+            return string("o", object(value, hash, refs));
         case "undefined":
             return hash;
+        case "symbol":
+            return string("m", string(value.toString(), hash));
         case "number":
             return string("n", string(value.toString(), hash));
         case "boolean":
@@ -40,7 +40,7 @@ export function object(
     refs.add(value);
     for (const key in value) {
         hash = string(key, hash);
-        hash = unknown(value[key as keyof object], hash, refs)
+        hash = unknown(value[key as keyof object], hash, refs);
     }
     return hash;
 }
