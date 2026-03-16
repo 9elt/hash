@@ -11,7 +11,7 @@ export function unknown(
         case "undefined":
             return hash;
         case "symbol":
-            return string("m", string(value.toString(), hash));
+            return string("y", string(value.toString(), hash));
         case "number":
             return string("n", string(value.toString(), hash));
         case "boolean":
@@ -37,11 +37,17 @@ export function object(
     if (refs.has(value)) {
         return string("&", hash);
     }
+
     refs.add(value);
+
     for (const key in value) {
-        hash = string(key, hash);
-        hash = unknown(value[key as keyof object], hash, refs);
+        hash = unknown(
+            value[key as never],
+            string(key, hash),
+            refs,
+        );
     }
+
     return hash;
 }
 
@@ -50,8 +56,10 @@ export function string(
     hash: number = 5381,
 ): number {
     let i = value.length;
+
     while (i--) {
         hash = (hash * 33) ^ (value.charCodeAt(i) & 0xffff);
     }
+
     return hash;
 }
